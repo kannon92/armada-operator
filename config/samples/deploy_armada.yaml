@@ -14,13 +14,21 @@ spec:
     repository: gresearch/armada-server
     tag: 6141171b8bde8a03113090a819d728511c2dc39f
   applicationConfig:
-    server: localhost:50051
-    forceNoTls: true
-    toleratedTaints:
-      - key: armada.io/batch
-        operator: in
     auth:
       anonymousAuth: true
+      permissionGroupMapping:
+        submit_jobs: ["everyone"]
+        submit_any_jobs: ["everyone"]
+        create_queue: ["everyone"]
+        delete_queue: ["everyone"]
+        cancel_jobs: ["everyone"]
+        cancel_any_jobs: ["everyone"]
+        reprioritize_jobs: ["everyone"]
+        reprioritize_any_jobs: ["everyone"]
+        watch_events: ["everyone"]
+        watch_all_events: ["everyone"]
+        execute_jobs: ["everyone"]
+    server: localhost:50051
     postgres:
       connection:
         host: postgresql
